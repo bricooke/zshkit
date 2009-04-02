@@ -5,12 +5,8 @@ function not_run_from_ssh () {
 	echo $?
 }
 
-if [[ -x `which mvim` && $(not_run_from_ssh) = 1 ]]; then
-	EDITOR="mvim -f"
-elif [[ -x `which nano` ]]; then
-	EDITOR=nano
-elif [[ -x `which pico` ]]; then
-	EDITOR=pico
+if [[ -x /Applications/UserApps/Emacs.app/Contents/MacOS/bin/emacsclient && $(not_run_from_ssh) = 1 ]]; then
+	EDITOR="/Applications/UserApps/Emacs.app/Contents/MacOS/bin/emacsclient"
 else
 	EDITOR=vi
 fi
